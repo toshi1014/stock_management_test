@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<h1><a href="{% url 'top' %}">item</a></h1>
+
+<h2>{{ item.C1 }} / {{ item.C2 }}</h2>
+<img src='{{ MEDIA_URL }}{{item.image}}' width=200>
+<h3>--- {{ item.name }} ---</h3>
+sum：{{ item.sum }}<br>
+stock：{{ item.stock }}<br>
+using：{{ item.using }}<br>
+location：{{ item.location }}<br><br>
+
+
+<form action="{% url 'use' pk=item.id %}" method="get">
+    name  <input type="text" name="name"><br>
+    number<input type="number" name="number">
+    <button type="submit">borrow</button>
+</form>
+
+<h4>log</h4>
+{% for l in log %}
+    <a href="{% url 'b_or_n' pk=item.id date=l.0 number=l.1 b_or_n=l.3%}">
+        {% if l.3 == "0" %}
+            ✕
+        {% else %}
+            〇
+        {% endif %}
+    </a>
+    {{ l.0 }} /
+    {{ l.1 }} /
+    {{ l.2 }}
+    {% if not l.4 == "NONE" %}
+        /
+        {% if l.3 == "0" %}
+            last
+        {% endif %}
+        returned at {{ l.4 }}
+    {% endif %}
+    <br>
+{% endfor %}
+
+
+</body>
+</html>

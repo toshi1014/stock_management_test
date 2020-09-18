@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1><a href="{% url 'top' %}">New</a></h1>
+
+<form enctype="multipart/form-data" action="{% url 'new' %}" method="post">
+{% csrf_token %}
+    C1：{{ form.C1 }}<br>
+    C2：{{ form.C2 }}<br>
+    name：{{ form.name }}<br>
+    image：{{ form.image }}<br>
+    sum：{{ form.sum }}<br>
+    location：{{ form.location }}<br>
+    {{ form.stock.as_hidden }}{{ form.using.as_hidden }}{{ form.user.as_hidden }}
+    {{ form.number.as_hidden }}{{ form.bo_date.as_hidden }}{{ form.re_date.as_hidden }}
+    {{ form.back_or_not.as_hidden }}<br>
+    <input type="submit" value="Upload">
+</form>
+
+
+</body>
+</html>

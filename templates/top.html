@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<h1>Stock Management</h1>
+
+<form  action="{% url 'search' %}" method="get">
+          <input type="text" name="query">
+        <button type="submit">search</button>
+    </form>
+
+
+<h2><a href="{% url 'lists' %}">lists</a></h2>
+<h2><a href="{% url 'category' c2='NONE' %}">category</a></h2>
+<h2><a href="{% url 'new' %}">new</a></h2>
+
+</body>
+</html>

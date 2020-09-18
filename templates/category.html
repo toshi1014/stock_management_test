@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1><a href="{% url 'top' %}">category</a></h1>
+
+{% for r in res %}
+    {% if r.2 != 0 %}
+        <h2>{{ r.0 }}</h2>
+    {% endif %}
+    {% for i in r.1 %}
+        <h3><a href="{% url 'category' c2=i.0 %}">{{ i.0 }}</a></h3>
+        {% if not c2 == "NONE" %}
+            {% for m in i.1 %}
+                <a href="{% url 'item' pk=m.id %}">{{ m.name }}</a> /
+                sum：{{ m.sum }} /
+                stock：{{ m.stock }} /
+                using：{{ m.using }} /
+                location：{{ m.location }} /
+                <br>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+
+</body>
+</html>

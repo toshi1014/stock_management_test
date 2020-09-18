@@ -1,0 +1,19 @@
+models
+
+C1
+C2
+name
+image
+sum
+stock
+using
+location
+
+
+user
+number
+date
+back or not
+
+
+item log isn't shown
